@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from .views import home_view, index
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', home_view, name='home'),
+    path('qr/', index, name='qr'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

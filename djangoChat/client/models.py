@@ -1,5 +1,7 @@
 from django.db import models
 from django_tenants.models import TenantMixin, DomainMixin
+from django.contrib.auth.models import AbstractUser
+import uuid
 
 class Client(TenantMixin):
     name = models.CharField(max_length=100)

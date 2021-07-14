@@ -1,0 +1,28 @@
+{% extends 'accounts/base.html' %}
+{% block body %}
+<h1> Login</h1>
+
+<div class="columns is-mobile is-centered is-vcentered">
+    <div class="column is-half">
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="field">
+
+                <div class="control">
+                    <input class="input is-large mb-3" name="username" type="text" placeholder="Username">
+                </div>
+            </div>
+            <div class="field">
+
+                <div class="control">
+                    <input class="input is-large mb-3" name="password" type="password" placeholder="********">
+                </div>
+            </div>
+            <button type="submit" class="button is-warning is-large is-fullwidth">Login</button>
+        </form>
+        <div>
+            Do not have an account? <a href="{% url 'register' %}">Register here.</a>
+        </div>
+    </div>
+</div>
+{% endblock  %}
