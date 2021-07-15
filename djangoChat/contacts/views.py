@@ -11,7 +11,7 @@ def main(request):
     else:
         contacts = Contact.objects.all()
         search_input = ''
-    return render(request, 'main.html', {'contacts': contacts, 'search_input': search_input})
+    return render(request, 'contacts/main.html', {'contacts': contacts, 'search_input': search_input})
 
 def index(request):
     
@@ -28,9 +28,9 @@ def addContact(request):
             address=request.POST['address'],
             )
         new_contact.save()
-        return redirect('/')
+        return redirect('/contact/')
 
-    return render(request, 'new.html')
+    return render(request, 'contacts/new.html')
 
 def editContact(request, pk):
     contact = Contact.objects.get(id=pk)
@@ -43,18 +43,18 @@ def editContact(request, pk):
         contact.address = request.POST['address']
         contact.save()
 
-        return redirect('/profile/'+str(contact.id))
-    return render(request, 'edit.html', {'contact': contact})
+        return redirect('/contact/profile/'+str(contact.id))
+    return render(request, 'contacts/edit.html', {'contact': contact})
 
 def deleteContact(request, pk):
     contact = Contact.objects.get(id=pk)
 
     if request.method == 'POST':
         contact.delete()
-        return redirect('/')
+        return redirect('/contact/')
 
-    return render(request, 'delete.html', {'contact': contact})
+    return render(request, 'contacts/delete.html', {'contact': contact})
 
 def contactProfile(request, pk):
     contact = Contact.objects.get(id=pk)
-    return render(request, 'contact-profile.html', {'contact':contact})
+    return render(request, 'contacts/contact-profile.html', {'contact':contact})

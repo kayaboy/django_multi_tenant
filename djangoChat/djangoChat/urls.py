@@ -22,6 +22,7 @@ from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('qr/', index, name='qr'),
+    path('auth/', include("tenant_app.urls")),
     path('', include('contacts.urls'))
 ]
 
