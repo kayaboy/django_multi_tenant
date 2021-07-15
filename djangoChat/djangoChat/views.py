@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from websites.models import Website
 import qrcode
 import segno
 from segno import helpers
@@ -17,18 +16,3 @@ def index(request):
 
     return render(request, "qr.html", context)
 
-def home_view(request):
-    name = "Welcome to"
-
-    obj = Website.objects.get(id=1)
-
-    context = {
-        'name': name,
-        'obj': obj,
-    }
-
-    return render(request, 'home.html', context)
-
-def contact(request):
-    pass
-    
