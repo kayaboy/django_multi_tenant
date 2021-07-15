@@ -13,10 +13,14 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='CompanyType',
+            name='Contact',
             fields=[
                 ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=128)),
+                ('full_name', models.CharField(max_length=250)),
+                ('relationship', models.CharField(max_length=250)),
+                ('email', models.EmailField(max_length=254)),
+                ('phone_number', models.CharField(max_length=20)),
+                ('address', models.CharField(max_length=1000)),
             ],
         ),
     ]

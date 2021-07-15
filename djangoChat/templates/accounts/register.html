@@ -1,0 +1,29 @@
+{% extends 'accounts/base.html' %}
+{% block body %}
+
+<div class="columns is-mobile is-centered is-vcentered mt-5">
+
+    <div class="column is-half">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="field mb-3">
+                <input class="input is-large" autofocus type="text" name="username" placeholder="Username">
+            </div>
+            <div class="field mb-3">
+                <input class="input is-large" type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="field mb-3">
+                <input class="input is-large" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="field mb-3">
+                <input class="input is-large" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="button is-block is-info is-large is-fullwidth" type="submit" value="Register">
+        </form>
+        <div>
+            Already have an account? <a href="{% url 'login' %}">Log In here.</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

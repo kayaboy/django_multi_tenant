@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainSpoy Library {% block title %}
+        {% endblock  %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+</head>
+<body>
+    {% if messages %}
+    {% for message in messages  %}
+    <div
+        class="notification is-light {% if message.tags == 'is-success' %}{{ message.tags}}{% else %}is-danger{% endif %}">
+        <button class="delete"></button>
+        {{message}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="container">
+        {% block body %}
+        {% endblock  %}
+    </div>
+</body>
+</html>
