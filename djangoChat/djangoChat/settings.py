@@ -38,9 +38,15 @@ SHARED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'tenant_users.permissions',
+    # 'tenant_users.tenants',
+
     'shared_app',
     'qr_code',
     'contacts',
+    'users',
+    'customers',
 ]
 
 TENANT_APPS = [
@@ -51,13 +57,24 @@ TENANT_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tenant_app',
+
+    'tenant_users.permissions',
 ]
 
 INSTALLED_APPS = list(SHARED_APPS) + [app for app in TENANT_APPS if app not in SHARED_APPS]
 
-TENANT_MODEL = "client.Client" # app.Model
-
+#tenant-original
+# TENANT_MODEL = "client.Client" # app.Model
 TENANT_DOMAIN_MODEL = "client.Domain"  # app.Model
+
+#tenant user
+TENANT_MODEL = 'customers.Client'
+TENANT_USERS_DOMAIN = "example.com"
+
+AUTH_USER_MODEL = 'users.TenantUser'
+AUTHENTICATION_BACKENDS = (
+    'tenant_users.permissions.backend.UserBackend',
+)
 
 MIDDLEWARE = [
     'django_tenants.middleware.main.TenantMainMiddleware',

@@ -22,7 +22,8 @@ from .views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('qr/', index, name='qr'),
-    path('', include('contacts.urls'))
+    path('', include('contacts.urls')),
+    path('test/', name='register' )
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
